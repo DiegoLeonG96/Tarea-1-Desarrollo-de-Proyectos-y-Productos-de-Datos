@@ -20,3 +20,8 @@ CATEGORICAL_FEAT = [
 FEATURES = NUMERIC_FEAT + CATEGORICAL_FEAT
 EPS = 1e-7
 TARGET_COL = "high_tip"
+
+MODEL_PARAMETERS = {
+    "n_estimators": 100,
+    "max_depth": 10,    
+}
