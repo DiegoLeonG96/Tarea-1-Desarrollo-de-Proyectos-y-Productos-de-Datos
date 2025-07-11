@@ -1,12 +1,13 @@
 import pandas as pd
-from src.config import DATASET_URL, FEATURES, TARGET_COL, RAW_DATA_DIR, PROC_DATA_DIR
+from src.config import DATASET_BASE_URL, FEATURES, TARGET_COL
+from src.config import RAW_DATA_DIR, PROC_DATA_DIR, EVAL_MONTHS, TRAINING_MONTH
 from src.features.build_features import synthetic_features
 import os 
 
-def load_raw_data():
-    taxi = pd.read_parquet(DATASET_URL)
+def load_raw_data(month: str):
+    taxi = pd.read_parquet(f"{DATASET_BASE_URL}_{month}.parquet")
     os.makedirs(RAW_DATA_DIR, exist_ok=True)
-    taxi.to_parquet(f"{RAW_DATA_DIR}/raw_data.parquet")
+    taxi.to_parquet(f"{RAW_DATA_DIR}/raw_data_{month}.parquet")
     return taxi
 
 def preprocess(df):
@@ -30,12 +31,13 @@ def preprocess(df):
     return df.reset_index(drop=True)
 
 def get_preprocessed_data():
-    raw_data = load_raw_data()
-    pp_data = preprocess(raw_data)
     os.makedirs(PROC_DATA_DIR, exist_ok=True)
-    pp_data.to_parquet(f"{PROC_DATA_DIR}/training_data.parquet")
-    return pp_data
+    for month in set(EVAL_MONTHS + [TRAINING_MONTH]):
+        raw_data = load_raw_data(month)
+        pp_data = preprocess(raw_data)
+        pp_data.to_parquet(f"{PROC_DATA_DIR}/processed_data_{month}.parquet")
+    
 
 if __name__ == "__main__":
-    _ = get_preprocessed_data()
+    get_preprocessed_data()
 
