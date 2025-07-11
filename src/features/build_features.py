@@ -1,5 +1,6 @@
 import pandas as pd
 from src.config import EPS
+
 def synthetic_features(df: pd.DataFrame):
     # add features
     df['pickup_weekday'] = df['tpep_pickup_datetime'].dt.weekday
