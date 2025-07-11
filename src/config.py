@@ -25,3 +25,6 @@ MODEL_PARAMETERS = {
     "n_estimators": 100,
     "max_depth": 10,    
 }
+
+RAW_DATA_DIR = '../data/raw'
+PROC_DATA_DIR = '../data/processed'
