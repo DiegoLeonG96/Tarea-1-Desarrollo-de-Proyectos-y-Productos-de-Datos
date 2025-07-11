@@ -1,4 +1,4 @@
-DATASET_URL = 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2020-01.parquet'
+DATASET_BASE_URL = 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata'
 
 NUMERIC_FEAT = [
     "pickup_weekday",
@@ -28,3 +28,10 @@ MODEL_PARAMETERS = {
 
 RAW_DATA_DIR = '../data/raw'
 PROC_DATA_DIR = '../data/processed'
+MODEL_DIR = '../models'
+
+TRAINING_MONTH = '2020-01'
+
+EVAL_MONTHS = ['2020-01', '2020-02', '2020-03', '2020-05']
+
+REDUCE_TRAINING = False
