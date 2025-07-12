@@ -14,7 +14,7 @@ src.modeling.train contiene la clase Training con el método fit_model, lo cual 
 
 ## 4. Evaluación
 
-src.modeling.predict contiene la clase Evaluation con un método eval_model, el cual tomará el modelo alojado en models/, realizará las predicciones y calculará un dataframe con los f1-score mensuales. Esta parte asume que el paso 3 ya se ejecutó. De la misma forma que para la generación de datos se le pueden cambiar variables de configuración con el método change_configs
+src.modeling.predict contiene la clase Evaluation con un método eval_model, el cual tomará el modelo alojado en models/, realizará las predicciones y calculará un dataframe con los f1-score mensuales. Esta parte asume que el paso 3  y 2 ya se ejecutó (buscará archivos de evaluación). De la misma forma que para la generación de datos se le pueden cambiar variables de configuración con el método change_configs
 
 ## 5. Visualizaciones
 
@@ -23,3 +23,5 @@ src.visualization.plots contiene la clase PlotsGeneration con un método plot_sc
 ## 6. Ejemplo de ejecución
 
 El notebook alojado en notebooks/testing_pipeline.ipynb contiene una prueba con celdas breves de todos los pasos anteriores y ahonda en el estudio de la baja de rendimiento desde Abril de 2020 para un entrenamiento en Enero de 2020.
+
+IMPORTANTE: los datos no se cargaron a este repositorio, por temas de peso de archivo. Si se ejecuta el notebook funcionará sin problemas.
