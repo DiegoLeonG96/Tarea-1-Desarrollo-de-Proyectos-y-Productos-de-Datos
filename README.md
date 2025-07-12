@@ -24,4 +24,4 @@ src.visualization.plots contiene la clase PlotsGeneration con un método plot_sc
 
 El notebook alojado en notebooks/testing_pipeline.ipynb contiene una prueba con celdas breves de todos los pasos anteriores y ahonda en el estudio de la baja de rendimiento desde Abril de 2020 para un entrenamiento en Enero de 2020.
 
-IMPORTANTE: los datos no se cargaron a este repositorio, por temas de peso de archivo. Si se ejecuta el notebook funcionará sin problemas.
+IMPORTANTE: los datos no se cargaron a este repositorio, por temas de peso de archivo. Si se ejecuta el notebook funcionará sin problemas. Al ejecutar el notebook de prueba se crean automáticamente los directorios con los datos dentro
