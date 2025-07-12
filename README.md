@@ -5,22 +5,26 @@ Se recomienda usar ambiente conda previamente:
 Luego instalar dependencias con:
 - pip install -r requirements.txt
 
-## 2. Generación de datos
+
+## 2. Variables de configuración
+La clase Configurations src.configs tiene definidas todos los nombres de directorios, urls, nombres de features, meses por defecto de entrenamiento y evaluación, entre otros. Todo el resto del paquete utiliza estas configuraciones.
+
+## 3. Generación de datos
 src.data.dataset contiene una clase Dataset con un método get_preprocessed_data que carga todos los datos y los aloja en el directorio data/, tanto cruda como procesada. 
 En el método change_configs se le puede ingresar un diccionario con cambios de configuración, ej: cambiar mes de entrenamiento y meses de evaluación. Si no se específican cambios se asumirá entrenamiento con 2020-01 y evaluación 2020-02, 2020-03 y 2020-05
 
-## 3. Entrenamiento
-src.modeling.train contiene la clase Training con el método fit_model, lo cual entrenará el modelo y lo guardará en models/. Esta parte asume que ya se realizó el punto 2 (va a cargar los datos de entrenamiento alojados en data/processed). De la misma forma que para la generación de datos se le pueden cambiar variables de configuración con el método change_configs
+## 4. Entrenamiento
+src.modeling.train contiene la clase Training con el método fit_model, lo cual entrenará el modelo y lo guardará en models/. Esta parte asume que ya se realizó el punto 3 (va a cargar los datos de entrenamiento alojados en data/processed). De la misma forma que para la generación de datos se le pueden cambiar variables de configuración con el método change_configs
 
-## 4. Evaluación
+## 5. Evaluación
 
-src.modeling.predict contiene la clase Evaluation con un método eval_model, el cual tomará el modelo alojado en models/, realizará las predicciones y calculará un dataframe con los f1-score mensuales. Esta parte asume que el paso 3  y 2 ya se ejecutó (buscará archivos de evaluación). De la misma forma que para la generación de datos se le pueden cambiar variables de configuración con el método change_configs
+src.modeling.predict contiene la clase Evaluation con un método eval_model, el cual tomará el modelo alojado en models/, realizará las predicciones y calculará un dataframe con los f1-score mensuales. Esta parte asume que el paso 4 y 3 ya se ejecutó (buscará archivos de evaluación). De la misma forma que para la generación de datos se le pueden cambiar variables de configuración con el método change_configs
 
-## 5. Visualizaciones
+## 6. Visualizaciones
 
 src.visualization.plots contiene la clase PlotsGeneration con un método plot_scores para graficar los f1-scores mensuales y el método generate_numerical_drift que grafica los histogramas de todas las features numéricas en cada mes.
 
-## 6. Ejemplo de ejecución
+## 7. Ejemplo de ejecución
 
 El notebook alojado en notebooks/testing_pipeline.ipynb contiene una prueba con celdas breves de todos los pasos anteriores y ahonda en el estudio de la baja de rendimiento desde Abril de 2020 para un entrenamiento en Enero de 2020.
 
