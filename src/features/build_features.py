@@ -1,5 +1,5 @@
 import pandas as pd
-from src.config import EPS
+from src.config import Configurations
 
 def synthetic_features(df: pd.DataFrame):
     # add features
@@ -8,5 +8,5 @@ def synthetic_features(df: pd.DataFrame):
     df['pickup_minute'] = df['tpep_pickup_datetime'].dt.minute
     df['work_hours'] = (df['pickup_weekday'] >= 0) & (df['pickup_weekday'] <= 4) & (df['pickup_hour'] >= 8) & (df['pickup_hour'] <= 18)
     df['trip_time'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.seconds
-    df['trip_speed'] = df['trip_distance'] / (df['trip_time'] + EPS)
+    df['trip_speed'] = df['trip_distance'] / (df['trip_time'] + Configurations().get_dict()["EPS"])
     return df
