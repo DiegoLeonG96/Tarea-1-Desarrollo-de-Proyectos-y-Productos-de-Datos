@@ -1,8 +1,11 @@
 ## 1. Instalación requerimientos
 Se recomienda usar ambiente conda previamente:
+
 - conda create tarea1_venv
 - conda activate tarea1_venv
+
 Luego instalar dependencias con:
+
 - pip install -r requirements.txt
 
 
